@@ -85,17 +85,16 @@
     <script>
         var text = document.getElementById("text");
         var color1 = document.getElementById("color1");
-        if (Number(localStorage.pagecount) == 0) {
-            localStorage.setItem("div", color1.id);
-            localStorage.setItem("newcolor", color1.style.backgroundColor);
-            text.style.backgroundColor = color1.style.backgroundColor;
-            color1.style.top = -5 + "px";
-        }
         window.onload = function() {
-            var div = document.getElementById(localStorage.getItem("div"));
-            color1.style.top = 0 + 'px';
-            text.style.backgroundColor = localStorage.getItem("newcolor");
-            div.style.top = -5 + 'px';
+            if (localStorage.getItem("div") == null) {
+                localStorage.setItem("div", color1.id);
+                localStorage.setItem("newcolor", color1.style.backgroundColor);
+            } else {
+                var div = document.getElementById(localStorage.getItem("div"));
+                color1.style.top = 0 + 'px';
+                text.style.backgroundColor = localStorage.getItem("newcolor");
+                div.style.top = -5 + 'px';
+            }
         }
 
         function changeColor(that) {
